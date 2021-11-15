@@ -70,10 +70,8 @@
     if (!header.classList.contains('header-scrolled')) {
       offset -= 16
     }
-	
+
     let elementPos = select(el).offsetTop
-    let poo = elementPos - offset
-    
     window.scrollTo({
       top: elementPos - offset,
       behavior: 'smooth'
@@ -99,7 +97,6 @@
     window.addEventListener('load', headerFixed)
     onscroll(document, headerFixed)
   }
-  
 
   /**
    * Back to top button

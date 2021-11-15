@@ -1,29 +1,33 @@
 <?php
- require_once "Mail.php";
+
+    ini_set("include_path", '/home/e587261/php:' . ini_get("include_path") );
+    require_once "Mail.php";
  
- $from = "eee_lennon@yahoo.com";
- $to = "elennon@outlook.ie";
- $subject = "Hi!";
- $body = "Hi,\n\nHow are you?";
+    $visitor_name = htmlspecialchars($_POST['visitor_name']);
+    $visitor_email = htmlspecialchars($_POST['visitor_email']);
+    $email_title = htmlspecialchars($_POST['visitor_title']);
+    $email_body = htmlspecialchars($_POST['email_body']); 
+    $recipient = "eee_lennon@yahoo.com";
  
- $host = "5.189.183.138";
- $username = "ned@elstorage.com";
+ $host = "91.210.235.216";
+ $username = "info@elstorage.ie";
  $password = "Rhiabit666";
  
- $headers = array ('From' => $from,
-   'To' => $to,
-   'Subject' => $subject);
+ $headers = array ('From' => "info@elstorage.ie",
+   'To' => $recipient,
+   'Subject' => $email_title);
  $smtp = Mail::factory('smtp',
    array ('host' => $host,
-     'auth' => true,
+     'auth' => "PLAIN",
+     'socket_options' => array('ssl' => array('verify_peer_name' => false)),
      'username' => $username,
      'password' => $password));
  
- $mail = $smtp->send($to, $headers, $body);
+ $mail = $smtp->send($recipient, $headers, $email_body);
  
  if (PEAR::isError($mail)) {
    echo("<p>" . $mail->getMessage() . "</p>");
   } else {
-   echo("<p>Message successfully sent!</p>");
+   echo("OK");
   }
  ?>
