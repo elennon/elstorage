@@ -135,6 +135,9 @@ h1, h2, h3, h4, h5, h6 {
 #topbar .contact-info .phone-icon {
   margin-left: 15px;
 }
+#topbar .contact-info .envelope-icon {
+  margin-left: 15px;
+}
 #topbar .social-links a {
   color: rgba(255, 255, 255, 0.6);
   padding: 4px 12px;
